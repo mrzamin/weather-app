@@ -1,11 +1,23 @@
 //Variable for IP Lookup API:
 let location = "auto:ip";
+let tempUnit = "F";
 
 //Location Getter:
 const getLocation = () => {
   return location;
 };
 
+const setLocation = (newLocation) => {
+  location = newLocation;
+};
+
+const getTempUnit = () => {
+  if (tempUnit === "F") {
+    return "°F";
+  } else {
+    return `${weatherData.current.temp_c}°C`;
+  }
+};
 //Call to the Weather API:
 async function getWeatherData(location) {
   const API = `https://api.weatherapi.com/v1/forecast.json?key=31e2c850d3b84d2ab73234210241703&q=${location}&days=5&aqi=no/ip.json`;
@@ -24,9 +36,16 @@ const getCurrentWeather = async (location) => {
     country: weatherData.location.country,
     date: weatherData.location.localtime,
     description: weatherData.current.condition.text,
-    temp_f: weatherData.current.temp_f,
-    temp_c: weatherData.current.temp_c,
+    temp: (function Temp() {
+      if (tempUnit == "F") {
+        return `${weatherData.current.temp_f}°F`;
+      } else {
+        return `${weatherData.current.temp_c}°C`;
+      }
+    })(),
     uv: weatherData.current.uv,
+    humidity: weatherData.current.humidity,
+    wind: weatherData.current.wind_mph,
   };
   return currentWeather;
 };
@@ -41,10 +60,20 @@ const getForecast = async (location) => {
       icon: day.day.condition.icon,
       description: day.day.condition.text,
       date: day.date,
-      high_c: day.day.maxtemp_c,
-      high_f: day.day.maxtemp_f,
-      low_c: day.day.mintemp_c,
-      low_f: day.day.mintemp_f,
+      high: (function Temp() {
+        if (tempUnit === "F") {
+          return `${day.day.maxtemp_f}°F`;
+        } else {
+          return `${day.day.maxtemp_c}°C`;
+        }
+      })(),
+      low: (function Temp() {
+        if (tempUnit === "F") {
+          return `${day.day.mintemp_f}°F`;
+        } else {
+          return `${day.day.mintemp_c}°C`;
+        }
+      })(),
     };
     forecastDays.push(forecastDay);
   });
@@ -60,10 +89,4 @@ const getAllWeather = async (location) => {
   return allWeatherData;
 };
 
-export {
-  getLocation,
-  getWeatherData,
-  getCurrentWeather,
-  getForecast,
-  getAllWeather,
-};
+export { getLocation, setLocation, getAllWeather };
