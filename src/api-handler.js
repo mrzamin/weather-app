@@ -49,7 +49,20 @@ const getForecast = async (location) => {
     forecastDays.push(forecastDay);
   });
 
-  console.log(forecastDays);
+  return forecastDays;
 };
 
-export { getLocation, getWeatherData, getCurrentWeather, getForecast };
+const getAllWeather = async (location) => {
+  const currentWeather = await getCurrentWeather(location);
+  const forecast = await getForecast(location);
+  const allWeatherData = [currentWeather, ...forecast];
+  return allWeatherData;
+};
+
+export {
+  getLocation,
+  getWeatherData,
+  getCurrentWeather,
+  getForecast,
+  getAllWeather,
+};
