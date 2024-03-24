@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&family=Borel&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&family=Borel&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Bakbak+One&family=Borel&family=Cedarville+Cursive&family=Dancing+Script:wght@400..700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 7rem auto 3rem;
+  background: linear-gradient(
+    -45deg,
+    var(--cyan-600),
+    var(--cyan-500),
+    var(--cyan-400),
+    black
+  );
+
+  background-size: 400% 400%;
+  animation: gradient 30s ease infinite;
+
+  color: white;
+
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --cyan-700: #0e7490;
+  --cyan-800: #155e75;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  font-family: "Abel", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* font-family: "Bakbak One", sans-serif;
+  font-weight: 400;
+  font-style: normal; */
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header,
+footer,
+.forecast-card,
+.weather-card,
+.weather-stats-container div {
+  background-color: rgb(255, 255, 255, 0.2);
+}
+
+footer {
+  height: 100%;
+  font-size: 0.9rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid red;
+}
+
+footer a {
+  color: var(--amber-600);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+
+  /* font-family: "Borel", cursive;
+  font-weight: 400;
+  font-style: normal; */
+
+  font-style: thin;
+}
+
+.form-fields {
+  border: 1px solid blue;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: ". search-area toggle";
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.form-fields > div {
+  grid-area: toggle;
+  justify-self: end;
+}
+
+/* Toggle button styles. */
+.toggle {
+  --width: 60px;
+  --height: calc(var(--width) / 2);
+
+  position: relative;
+  display: inline-block;
+  width: var(--width);
+  height: var(--height);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: var(--height);
+  cursor: pointer;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--height);
+  background-color: var(--cyan-700);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .slider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--height));
+  height: calc(var(--height));
+  border-radius: calc(var(--height) / 2);
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked + .slider {
+  background-color: var(--amber-600);
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(calc(var(--width) - var(--height)));
+}
+
+.toggle .labels {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-family: sans-serif;
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::after {
+  content: attr(data-C);
+  position: absolute;
+  right: 10px;
+  top: -1px;
+  color: var(--amber-600);
+  opacity: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .labels::before {
+  content: attr(data-F);
+  position: absolute;
+  left: 10px;
+  top: -1px;
+  color: #ffffff;
+  opacity: 0;
+  /* text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4); */
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked ~ .labels::after {
+  opacity: 0;
+}
+
+.toggle input:checked ~ .labels::before {
+  opacity: 1;
+}
+
+.error {
+  font-size: 0.9rem;
+  position: absolute;
+}
+
+h1 {
+  /* border: 1px solid green; */
+  text-align: center;
+  padding-top: 1rem;
+  font-family: "Cedarville Cursive", cursive;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+input,
+button {
+  padding: 0.3rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: var(--amber-500);
+  font-weight: bold;
+}
+
+button {
+  position: relative;
+}
+
+input::placeholder {
+  color: var(--amber-500);
+}
+
+#search-area {
+  border: 1px solid red;
+  justify-self: end;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  grid-area: search-area;
+  justify-self: center;
+}
+
+.app-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+}
+
+.weather-container {
+  padding: 1rem;
+  border: 1px solid green;
+  display: flex;
+  /* grid-template-areas: "weatherCard . statsCard";
+  grid-template-columns: repeat(3, 1fr); */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5rem;
+}
+
+.weather-card {
+  flex: 2;
+  flex-basis: 500px;
+}
+
+/* .weather-stats-container {
+  grid-area: statsCard;
+} */
+
+.forecast-container {
+  border: 1px solid orange;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-days-container {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+
+  gap: 1rem;
+  height: max-content;
+}
+
+.forecast-card {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.weather-stats-container {
+  display: grid;
+  justify-content: stretch;
+  align-content: stretch;
+  gap: 1rem;
+  /* width: max(400px, 20%); */
+  flex: 1;
+  border: 1px solid red;
+}
+
+.weather-stats-container div {
+  padding: 1rem;
+}
