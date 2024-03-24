@@ -12,11 +12,11 @@ const setLocation = (newLocation) => {
 };
 
 const getTempUnit = () => {
-  if (tempUnit === "F") {
-    return "°F";
-  } else {
-    return `${weatherData.current.temp_c}°C`;
-  }
+  return tempUnit;
+};
+
+const setTempUnit = (input) => {
+  tempUnit = unit;
 };
 //Call to the Weather API:
 async function getWeatherData(location) {
@@ -89,4 +89,4 @@ const getAllWeather = async (location) => {
   return allWeatherData;
 };
 
-export { getLocation, setLocation, getAllWeather };
+export { setTempUnit, switchTempUnit, getLocation, setLocation, getAllWeather };
