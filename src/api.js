@@ -1,6 +1,7 @@
 //Variable for IP Lookup API:
 let location = "auto:ip";
 let tempUnit = "F";
+let weatherCondition = "";
 
 //Location Getter:
 const getLocation = () => {
@@ -16,8 +17,17 @@ const getTempUnit = () => {
 };
 
 const setTempUnit = (input) => {
-  tempUnit = unit;
+  tempUnit = input;
 };
+
+const getWeatherCondition = () => {
+  return weatherCondition;
+};
+
+const setWeatherCondition = (condition) => {
+  weatherCondition = condition;
+};
+
 //Call to the Weather API:
 async function getWeatherData(location) {
   const API = `https://api.weatherapi.com/v1/forecast.json?key=31e2c850d3b84d2ab73234210241703&q=${location}&days=5&aqi=no/ip.json`;
@@ -30,7 +40,10 @@ async function getWeatherData(location) {
 //Filter API data down to current weather:
 const getCurrentWeather = async (location) => {
   const weatherData = await getWeatherData(location);
+
+  setWeatherCondition(weatherData.current.condition.text);
   const currentWeather = {
+    localTime: weatherData.location.localtime,
     icon: weatherData.current.condition.icon,
     location: weatherData.location.name,
     country: weatherData.location.country,
@@ -83,10 +96,18 @@ const getForecast = async (location) => {
 
 const getAllWeather = async (location) => {
   const currentWeather = await getCurrentWeather(location);
+  console.log(currentWeather);
   const forecast = await getForecast(location);
   const threeDayForecast = forecast.slice(0, 3);
   const allWeatherData = [currentWeather, threeDayForecast];
   return allWeatherData;
 };
 
-export { setTempUnit, switchTempUnit, getLocation, setLocation, getAllWeather };
+export {
+  getTempUnit,
+  setTempUnit,
+  getLocation,
+  setLocation,
+  getAllWeather,
+  getWeatherCondition,
+};
