@@ -3,8 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <script src="main.js" defer></script>
+    <title>Marisa's Weather App</title>
+    <script src="main.js" type="module" defer></script>
   </head>
-  <body></body>
+  <body class="default-background">
+    <header>
+      <h1>Weather App</h1>
+    </header>
+    <div class="form-fields">
+      <form id="search-area">
+        <div>
+          <input
+            id="input-box"
+            type="text"
+            placeholder="Enter a location or ZIP"
+          />
+          <div class="error" visibility="hidden"></div>
+        </div>
+        <button type="submit">Search</button>
+      </form>
+      <div>
+        <label class="toggle">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider"></span>
+          <span class="labels" data-F="F°" data-C="C°"></span>
+        </label>
+      </div>
+    </div>
+    <div class="app-container">
+      <div class="weather-container"></div>
+      <div class="forecast-container">
+        <div class="forecast-header"></div>
+        <div class="forecast-days-container"></div>
+      </div>
+    </div>
+    <footer>
+      <div>© 2024 mrzamin</div>
+      <div class="credits">
+        Data from <a href="https://www.weatherapi.com/">WeatherAPI.com</a>
+      </div>
+    </footer>
+  </body>
 </html>
