@@ -1,3 +1,3 @@
-# eslint-prettier-webpack
+# Weather App
 
-Setup code for new projects
+This project helps familiarize me with working with public APIs and async code.
