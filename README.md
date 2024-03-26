@@ -16,7 +16,7 @@ Building this app helped me understand working with APIs and asynchronous JavaSc
 
 ## Lessons Learned
 
-## What I'd Like to Work On / Improve Upon in the Future
+## What I'd Like to Work On in the Future
 - Additional background themes such as a "snow blizzard" theme
 - More specific form validation, such as a input length and ZIP code pattern constraints (requires research on global ZIP patterns)
 - An image/card slider for the forecast section
