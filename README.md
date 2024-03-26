@@ -18,7 +18,7 @@ Building this app helped me understand working with APIs and asynchronous JavaSc
 
 ## What I'd Like to Work On in the Future
 - Additional background themes such as a "snow blizzard" theme
-- More specific form validation, such as a input length and ZIP code pattern constraints (requires research on global ZIP patterns)
+- More specific form validation, such as input length and ZIP code pattern constraints (latter requires research on global ZIP patterns)
 - An image/card slider for the forecast section
 - An option to mark/save a location to "Favorites"
 - Local or session storage to save the user's "Favorites" 
