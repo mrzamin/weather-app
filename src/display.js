@@ -11,18 +11,19 @@ const weatherContainer = document.querySelector(".weather-container");
 //Display background theme:
 
 const displayBackground = (weather) => {
+  console.log("called");
   const body = document.body;
-  const isNightTime = weather.nightTime;
+  const isNightTime = weather.isNightTime;
   const condition = weather.description;
   if (isNightTime) {
     body.classList.add("night-theme");
-    body.classList.remove("default-theme", "sunny-theme", "stormy-theme");
+    body.classList.remove("default-theme", "sunny-theme");
   } else if (condition === "Sunny") {
     body.classList.add("sunny-theme");
-    body.classList.remove("default-theme", "night-theme", "stormy-theme");
+    body.classList.remove("default-theme", "night-theme");
   } else {
     body.classList.add("default-theme");
-    body.classList.remove("sunny-theme", "stormy-theme", "night-theme");
+    body.classList.remove("sunny-theme", "night-theme");
   }
 };
 

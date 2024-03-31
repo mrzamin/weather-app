@@ -48,7 +48,7 @@ body {
 }
 
 .night-theme {
-  background: linear-gradient(-45deg, #151965, #070f2b, #2d3250, #1b1a55);
+  background: linear-gradient(-45deg, #151965, #070f2b, #2d3250, black);
   background-size: 400% 400%;
   animation: gradient 20s ease infinite;
 }
