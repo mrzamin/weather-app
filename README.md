@@ -2,13 +2,13 @@
 
 <div align="center">
   
-[See it live](https://mrzamin.github.io/weather-app/)
+[Live Demo](https://mrzamin.github.io/weather-app/)
 
 ![App Preview](https://github.com/mrzamin/weather-app/assets/142754418/2040cbc9-a843-4457-80dd-4fcc00e9d6c9)
 </div>
   
 ## About This Project
-Building this app helped me understand working with APIs and asynchronous JavaScript code.
+Building this app helped me understand how to work with APIs and asynchronous JavaScript code.
 
 ### Requirements
 - Fetch and process JSON weather data from the Weather API
