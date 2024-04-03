@@ -11,7 +11,6 @@ const weatherContainer = document.querySelector(".weather-container");
 //Display background theme:
 
 const displayBackground = (weather) => {
-  console.log("called");
   const body = document.body;
   const isNightTime = weather.isNightTime;
   const condition = weather.description;
