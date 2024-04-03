@@ -399,6 +399,10 @@ h2,
     padding-top: 2rem;
   }
 
+  input[type="text"]::placeholder {
+    font-size: 0.5rem;
+  }
+
   .weather-card {
     padding-right: 0;
   }
